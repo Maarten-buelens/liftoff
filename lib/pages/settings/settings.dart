@@ -141,6 +141,15 @@ class AppearanceConfigPage extends StatelessWidget {
                 store.showScores = checked;
               },
             ),
+
+            SwitchListTile.adaptive(
+              title: const Text('Tap to hide'),
+              value: store.tapToHide,
+              onChanged: (checked) {
+                store.tapToHide= checked;
+              },
+            ),
+
             SwitchListTile.adaptive(
               title: const Text('Blur NSFW'),
               subtitle: const Text('Images in NSFW posts will be hidden.'),

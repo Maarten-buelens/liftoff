@@ -79,6 +79,10 @@ abstract class _ConfigStore with Store {
   bool showScores = true;
 
   @observable
+  @JsonKey(defaultValue: false)
+  bool tapToHide = false;
+
+  @observable
   @JsonKey(defaultValue: true)
   bool blurNsfw = true;
 

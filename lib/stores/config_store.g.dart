@@ -17,6 +17,7 @@ ConfigStore _$ConfigStoreFromJson(Map<String, dynamic> json) => ConfigStore()
   ..postCardShadow = json['postCardShadow'] as bool? ?? true
   ..showAvatars = json['showAvatars'] as bool? ?? true
   ..showScores = json['showScores'] as bool? ?? true
+  ..tapToHide = json['tapToHide'] as bool? ?? false
   ..blurNsfw = json['blurNsfw'] as bool? ?? true
   ..showEverythingFeed = json['showEverythingFeed'] as bool? ?? false
   ..defaultSortType = _sortTypeFromJson(json['defaultSortType'] as String?)
@@ -34,6 +35,7 @@ Map<String, dynamic> _$ConfigStoreToJson(ConfigStore instance) =>
       'postCardShadow': instance.postCardShadow,
       'showAvatars': instance.showAvatars,
       'showScores': instance.showScores,
+      'tapToHide': instance.tapToHide,
       'blurNsfw': instance.blurNsfw,
       'showEverythingFeed': instance.showEverythingFeed,
       'defaultSortType': instance.defaultSortType,
@@ -195,6 +197,22 @@ mixin _$ConfigStore on _ConfigStore, Store {
     });
   }
 
+  late final _$tapToHideAtom =
+      Atom(name: '_ConfigStore.tapToHide', context: context);
+
+  @override
+  bool get tapToHide {
+    _$tapToHideAtom.reportRead();
+    return super.tapToHide;
+  }
+
+  @override
+  set tapToHide(bool value) {
+    _$tapToHideAtom.reportWrite(value, super.tapToHide, () {
+      super.tapToHide = value;
+    });
+  }
+
   late final _$blurNsfwAtom =
       Atom(name: '_ConfigStore.blurNsfw', context: context);
 
@@ -294,6 +312,7 @@ postRoundedCorners: ${postRoundedCorners},
 postCardShadow: ${postCardShadow},
 showAvatars: ${showAvatars},
 showScores: ${showScores},
+tapToHide: ${tapToHide},
 blurNsfw: ${blurNsfw},
 showEverythingFeed: ${showEverythingFeed},
 defaultSortType: ${defaultSortType},

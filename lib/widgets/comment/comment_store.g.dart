@@ -193,6 +193,17 @@ mixin _$CommentStore on _CommentStore, Store {
   }
 
   @override
+  void toggleCollapsedShort() {
+    final _$actionInfo = _$_CommentStoreActionController.startAction(
+        name: '_CommentStore.toggleCollapsedShort');
+    try {
+      return super.toggleCollapsedShort();
+    } finally {
+      _$_CommentStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void addReply(CommentView commentView) {
     final _$actionInfo = _$_CommentStoreActionController.startAction(
         name: '_CommentStore.addReply');

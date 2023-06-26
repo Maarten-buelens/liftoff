@@ -3,7 +3,9 @@ import 'package:mobx/mobx.dart';
 
 import '../../comment_tree.dart';
 import '../../stores/accounts_store.dart';
+import '../../stores/config_store.dart';
 import '../../util/async_store.dart';
+
 
 part 'comment_store.g.dart';
 
@@ -12,7 +14,6 @@ class CommentStore = _CommentStore with _$CommentStore;
 abstract class _CommentStore with Store {
   @observable
   CommentView comment;
-
   final ObservableList<CommentTree> children;
 
   final int? userMentionId;
@@ -29,6 +30,9 @@ abstract class _CommentStore with Store {
 
   @observable
   bool showRaw = false;
+
+  @observable
+  bool tapToHide = ;
 
   final votingState = AsyncStore<FullCommentView>();
   final deletingState = AsyncStore<FullCommentView>();
@@ -75,7 +79,13 @@ abstract class _CommentStore with Store {
 
   @action
   void toggleCollapsed() {
+
     collapsed = !collapsed;
+  }
+  @action
+  void toggleCollapsedShort() {
+    collapsed = !collapsed;
+
   }
 
   @action
